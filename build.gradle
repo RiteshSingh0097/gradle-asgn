@@ -32,6 +32,26 @@ jar {
     }
 }
 
+//Question4
+
+repositories {
+    mavenCentral()
+}
+
+// Question5
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.8.1'
+}
+
+jar{
+    from configurations.compile.collect{ zipTree it }
+}
+
 //Q6
 
 apply from : 'myTask.gradle'
