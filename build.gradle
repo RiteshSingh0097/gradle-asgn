@@ -2,18 +2,24 @@
 
 apply plugin : 'java'
 
-dependencies {
-    compile 'org.apache.commons:commons-lang3:3.6'// lang3 dependency Q4
+//Creating jar file Question 1
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'Hello'
+        )
+    }
 }
 
-// adding sources directory Q2
+
+// adding sources directory Question 2
 sourceSets {
     main {
         java {
             srcDirs = ['src/main/java', 'src/main/java2']
         }
 
-        // Excluding file1.txt from jar  Q3
+        // Excluding file1.txt from jar  Question 3
         resources{
             srcDirs = ['src/main/resources']
             exclude 'file1.txt'
@@ -23,25 +29,12 @@ sourceSets {
 
 }
 
-//Creating jar file Q1
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'Hello'
-        )
-    }
-}
 
-//Question4
+
+//Question 4
 
 repositories {
     mavenCentral()
-}
-
-// Question5
-
-repositories {
-    jcenter()
 }
 
 dependencies {
@@ -52,6 +45,12 @@ jar{
     from configurations.compile.collect{ zipTree it }
 }
 
-//Q6
+// Question 5
+
+repositories {
+    jcenter()
+}
+
+//Question 6
 
 apply from : 'myTask.gradle'
